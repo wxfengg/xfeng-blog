@@ -2,65 +2,42 @@
 layout: home
 
 hero:
-  name: "China Carlos's Blog"
-  text: "PWA FAST SDK"
-  tagline: Carlos's Blog Web Site
+  name: "XFeng's Blog"
+  text: "一名程序员的博客"
+  tagline: 记录我的碎碎念~
   image:
     src: /logo.png
     alt: VitePress
   actions:
     - theme: brand
-      text: FAST PWA SDK API
-      link: https://carlosme.fun
-    - theme: alt
-      text: PWA 应用案例
-      link: https://carlosme.fun
-    - theme: alt
       text: 我的博客
-      link: https://carlosme.fun
+      link: https://wxfengg.github.io/xfeng-blog
     - theme: alt
-      text: 前端面经
-      link: https://carlosme.fun
-    - theme: alt
-      text: 支持一下
-      link: https://carlosme.fun
+      text: 项目-智慧养老
+      link: https://wuxufeng.top
+    # - theme: alt
+    #   text: 前端面经
+    #   link: https://carlosme.fun
+    # - theme: alt
+    #   text: 支持一下
+    #   link: https://carlosme.fun
 
 features:
-  - title: 什么是PWA渐进式应用？
+  - title: XFeng
     icon:
-      src: /light_pwa.svg
-    details: PWA（Progressive Web Application，渐进式 Web 应用）是一种结合了传统 Web 应用与原生移动应用优势的应用程序。PWA 利用现代 Web 技术提供用户体验接近原生应用的 Web 应用
-    link: https://carlosme.fun
-    linkText: 查看详情
-  - title: PWA 是如何构建的？
+      src: /emoji1.svg
+    details: 一名程序员。在职前端工程师，也会点Java，喜欢一切有趣的事情~</br></br>如果你有任何想法可以和我一起交流：wxfengg@gmail.com
+    # link: https://carlosme.fun
+    # linkText: 查看详情
+  - title: 打游戏
     icon:
-      src: /config.svg
-    details: 构建一个 PWA（渐进式 Web 应用）涉及多个关键技术和步骤，以确保应用具备离线能力、快速加载、可安装性等核心特性。以下是构建 PWA 的主要步骤和技术。
-    link: https://carlosme.fun
-    linkText: 查看详情
+      src: /emoji2.svg
+    details: 下班回家喜欢躺，平时没事喜欢打打游戏🎮</br></br>CF校长 or 王者农药
   - title: PWA 应用的优势有哪些？
     icon:
-      src: /lightning.svg
-    details: PWA 结合了 Web 应用的普遍可用性和原生应用的用户体验，是一种低成本、高效能的跨平台应用开发解决方案，通过提供离线能力、推送通知、可安装性等特性，能够在保持用户体验的同时，降低开发、维护和分发成本。
-    link: https://carlosme.fun
-    linkText: 查看详情
-  - title: 如何快速开发一个PWA应用？
-    icon:
-      src: /terminal.svg
-    details: 要快速开发一个 PWA 应用，可以遵循以下步骤。这些步骤涵盖了从设置基础项目到实现 PWA 核心特性的所有内容。
-    link: https://carlosme.fun
-    linkText: 查看详情
-  - title: PWA 的使用场景有哪些？
-    icon:
-      src: /mode.svg
-    details: PWA 的应用场景非常广泛，其核心优势包括离线支持、跨平台兼容、安装便捷性等，使其适用于各种类型的应用和服务。无论是商业、教育、医疗还是娱乐领域，PWA 都能够提供流畅、高效和可靠的用户体验。
-    link: https://carlosme.fun
-    linkText: 查看详情
-  - title: PWA 周边生态
-    icon:
-      src: /earth.svg
-    details: PWA（渐进式Web应用）生态包括Service Workers、Web App Manifest、响应式设计、离线支持、推送通知和应用缓存等技术，旨在提升Web应用的性能和用户体验，接近原生应用的功能。
-    link: https://carlosme.fun
-    linkText: 查看详情
+      src: /emoji3.svg
+    details: 喜欢旅游、探险 却 心有余而力不足😅</br></br>懒🛏</br></br>永远相信美好的事情即将发生💗
+    # link: https://carlosme.fun
+    # linkText: 查看详情
 ---
 

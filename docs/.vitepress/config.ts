@@ -1,13 +1,13 @@
 import { defineConfig } from "vitepress";
 
 export default defineConfig({
-  title: "My Awesome Project",
+  title: "XFeng's Blog",
   description: "A VitePress Site",
   // header标签里面插入的内容
   head: [["link", { rel: "icon", href: "/favicon.ico" }]],
   themeConfig: {
     // 网站的logo
-    logo: "/logo.svg",
+    logo: "/logo.png",
     // 文章右侧大纲目录
     outline: {
       level: [2, 6],
@@ -20,7 +20,7 @@ export default defineConfig({
     },
 
     // 主题
-    darkModeSwitchLabel: "深浅模式",
+    darkModeSwitchLabel: "",
     // 返回顶部label
     returnToTopLabel: "返回顶部",
     // 搜索
@@ -30,7 +30,7 @@ export default defineConfig({
     // 页脚
     footer: {
       message: "Released under the MIT License.",
-      copyright: "Copyright © 2023-present China Carlos",
+      copyright: "Copyright © BY XFeng | wxfengg@gmail.com",
     },
     // 文档的最后更新时间
     lastUpdated: {
@@ -40,22 +40,23 @@ export default defineConfig({
         timeStyle: "medium",
       },
     },
+    // 导航栏按钮
     nav: [
-      { text: "Home", link: "/" },
-      { text: "Examples", link: "/markdown-examples" },
+      { text: "首页", link: "/" },
+      { text: "博客", link: "/markdown-examples" },
     ],
-
+    // 侧边栏
     sidebar: [
       {
-        text: "Examples",
+        text: "博客",
         items: [
-          { text: "Markdown Examples", link: "/markdown-examples" },
-          { text: "Runtime API Examples", link: "/api-examples" },
+          { text: "第一条博客", link: "/test1" },
+          // { text: "第二条博客", link: "/api-examples" },
         ],
       },
     ],
     // 社交链接
-    socialLinks: [{ icon: "github", link: "https://github.com/ChinaCarlos" }],
+    socialLinks: [{ icon: "github", link: "https://github.com/wxfengg" }],
   },
   // 部署的时候需要注意该参数避免样式丢失
   base: "/xfeng-blog/",
