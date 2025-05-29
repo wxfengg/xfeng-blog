@@ -5,18 +5,21 @@
       <div style="margin-top: 24px">
         <Giscus
           :key="page.filePath"
-          repo="*"
-          repo-id="*"
-          category="*"
-          category-id="*"
+          repo="wxfengg/xfeng-blog"
+          repo-id="R_kgDOOx6hRQ"
+          category="Announcements"
+          category-id="DIC_kwDOOx6hRc4Cqtwl"
           mapping="pathname"
           strict="0"
           reactions-enabled="1"
           emit-metadata="0"
-          input-position="bottom"
+          input-position="top"
+          data-theme="preferred_color_scheme"
           lang="zh-CN"
+          data-loading="lazy"
           crossorigin="anonymous"
           :theme="isDark ? 'dark' : 'light'"
+          loading="lazy"
         />
       </div>
     </template>
