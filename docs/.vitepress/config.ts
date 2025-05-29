@@ -2,6 +2,7 @@ import { defineConfig } from "vitepress";
 
 export default defineConfig({
   title: "XFeng's Blog",
+  titleTemplate: "博客~",
   description: "A VitePress Site",
   // header标签里面插入的内容
   head: [["link", { rel: "icon", href: "/favicon.ico" }]],
@@ -18,32 +19,34 @@ export default defineConfig({
       prev: "上一页",
       next: "下一页",
     },
-
-    // 主题
-    darkModeSwitchLabel: "",
-    // 返回顶部label
+    // 主题切换文字
+    darkModeSwitchTitle: "切换到深色模式",
+    lightModeSwitchTitle: "切换到浅色模式",
+    // 返回顶部label文字
     returnToTopLabel: "返回顶部",
     // 搜索
-    search: {
-      provider: "local",
-    },
+    // search: {
+    //   provider: "local",
+    // },
     // 页脚
     footer: {
       message: "Released under the MIT License.",
       copyright: "Copyright © BY XFeng | wxfengg@gmail.com",
     },
     // 文档的最后更新时间
+    lastUpdatedText: "最后更新于",
+    // 文档的更新时间
     lastUpdated: {
-    text: "Updated at",
-    formatOptions: {
-        dateStyle: "full",
+      text: "时间",
+      formatOptions: {
+        dateStyle: "medium",
         timeStyle: "medium",
       },
     },
     // 导航栏按钮
     nav: [
       { text: "首页", link: "/" },
-      { text: "博客", link: "/markdown-examples" },
+      { text: "博客", link: "/test1" },
     ],
     // 侧边栏
     sidebar: [
@@ -57,6 +60,12 @@ export default defineConfig({
     ],
     // 社交链接
     socialLinks: [{ icon: "github", link: "https://github.com/wxfengg" }],
+    // 404找不到页面
+    notFound: {
+      title: "抱歉，您访问的资源不存在",
+      quote: "您好，您访问的资源不存在或已被删除。如果您有什么需求或建议， 请联系我。 邮箱：wxfengg@gmail.com",
+      linkText: "返回首页",
+    }
   },
   // 部署的时候需要注意该参数避免样式丢失
   base: "/xfeng-blog/",

@@ -33,7 +33,7 @@ features:
     icon:
       src: /emoji2.svg
     details: 下班回家喜欢躺，平时没事喜欢打打游戏🎮</br></br>CF校长 or 王者农药
-  - title: PWA 应用的优势有哪些？
+  - title: 诗和远方
     icon:
       src: /emoji3.svg
     details: 喜欢旅游、探险 却 心有余而力不足😅</br></br>懒🛏</br></br>永远相信美好的事情即将发生💗
