@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      busuanzi.pure.js:
+        specifier: ^1.0.3
+        version: 1.0.3
     devDependencies:
       '@giscus/vue':
         specifier: ^3.1.1
@@ -556,6 +560,9 @@ packages:
 
   birpc@2.3.0:
     resolution: {integrity: sha512-ijbtkn/F3Pvzb6jHypHRyve2QApOCZDR25D/VnkY2G/lBNcXCTsnsCxgY4k4PkVB7zfwzYbY3O9Lcqe3xufS5g==}
+
+  busuanzi.pure.js@1.0.3:
+    resolution: {integrity: sha512-tPULdyx+8NNb9geZYDpktKmHAYx9f2LEOBaHyWCaM7iPEMIa/43KgYAUluuU7YG9UFSOFpj4dO7Nj2Vlu3V9Rg==}
 
   ccount@2.0.1:
     resolution: {integrity: sha512-eyrF0jiFpY+3drT6383f1qhkbGsLSifNAjA61IUjZjmLCWjItY6LB9ft9YhoDgwfmclB2zhu51Lc7+95b8NRAg==}
@@ -1290,6 +1297,8 @@ snapshots:
       '@algolia/requester-node-http': 5.25.0
 
   birpc@2.3.0: {}
+
+  busuanzi.pure.js@1.0.3: {}
 
   ccount@2.0.1: {}
 

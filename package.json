@@ -18,5 +18,8 @@
     "vitepress": "^1.6.3",
     "vue": "^3.4.38"
   },
-  "packageManager": "pnpm@8.14.0"
+  "packageManager": "pnpm@8.14.0",
+  "dependencies": {
+    "busuanzi.pure.js": "^1.0.3"
+  }
 }

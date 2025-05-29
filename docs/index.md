@@ -41,3 +41,5 @@ features:
     # linkText: 查看详情
 ---
 
+<VisitorPanel></VisitorPanel>
+
