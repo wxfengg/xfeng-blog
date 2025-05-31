@@ -10,10 +10,13 @@ hero:
     alt: VitePress
   actions:
     - theme: brand
-      text: 我的博客
-      link: https://wxfengg.github.io/xfeng-blog
+      text: 博客
+      link: /blog1
     - theme: alt
-      text: 项目-智慧养老
+      text: xfeng-admin
+      link: https://github.com/wxfengg/xfeng-admin
+    - theme: alt
+      text: 毕设项目-智慧养老
       link: https://wuxufeng.top
     # - theme: alt
     #   text: 前端面经

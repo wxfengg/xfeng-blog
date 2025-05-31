@@ -4,8 +4,11 @@ export default defineConfig({
   title: "XFeng's Blog",
   titleTemplate: "博客~",
   description: "A VitePress Site",
+  ignoreDeadLinks: true,
   // header标签里面插入的内容
-  head: [["link", { rel: "icon", href: "/favicon.ico" }]],
+  head: [["link", { rel: "icon", href: "/xfeng-blog/flag.svg" }]],
+  //启用深色模式
+  appearance: "dark",
   themeConfig: {
     // 网站的logo
     logo: "/logo.png",
@@ -46,14 +49,14 @@ export default defineConfig({
     // 导航栏按钮
     nav: [
       { text: "首页", link: "/" },
-      { text: "博客", link: "/test1" },
+      { text: "博客", link: "/blog1" },
     ],
     // 侧边栏
     sidebar: [
       {
         text: "博客",
         items: [
-          { text: "第一条博客", link: "/test1" },
+          { text: "第一条博客", link: "/blog1" },
           // { text: "第二条博客", link: "/api-examples" },
         ],
       },
