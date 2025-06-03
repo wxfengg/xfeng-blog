@@ -11,7 +11,7 @@ export default defineConfig({
   appearance: "dark",
   themeConfig: {
     // 网站的logo
-    logo: "/logo.png",
+    logo: "/avatar_ac.png",
     // 文章右侧大纲目录
     outline: {
       level: [2, 6],
