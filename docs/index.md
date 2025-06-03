@@ -11,7 +11,7 @@ hero:
   actions:
     - theme: brand
       text: 博客
-      link: /blog1
+      link: /blogs/XFeng
     - theme: alt
       text: xfeng-admin
       link: https://github.com/wxfengg/xfeng-admin
@@ -44,5 +44,5 @@ features:
     # linkText: 查看详情
 ---
 
-<VisitorPanel></VisitorPanel>
+<VisitorPanel />
 

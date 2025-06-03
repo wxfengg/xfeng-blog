@@ -49,14 +49,14 @@ export default defineConfig({
     // 导航栏按钮
     nav: [
       { text: "首页", link: "/" },
-      { text: "博客", link: "/blog1" },
+      { text: "博客", link: "/blogs/XFeng" },
     ],
     // 侧边栏
     sidebar: [
       {
         text: "博客",
         items: [
-          { text: "第一条博客", link: "/blog1" },
+          { text: "第一条博客", link: "/blogs/XFeng" },
           // { text: "第二条博客", link: "/api-examples" },
         ],
       },

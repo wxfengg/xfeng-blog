@@ -6,6 +6,7 @@ import Layout from './Layout.vue'
 import busuanzi from "busuanzi.pure.js"
 import './style.css'
 import VisitorPanel from './components/VisitorPanel.vue'
+import BlogHead from './components/BlogHead.vue'
 
 export default {
   extends: DefaultTheme,
@@ -19,6 +20,7 @@ export default {
 
 
     app.component("VisitorPanel", VisitorPanel)
+    app.component("BlogHead", BlogHead)
     if (inBrowser) {
       router.onAfterRouteChange = () => {
         busuanzi.fetch()
