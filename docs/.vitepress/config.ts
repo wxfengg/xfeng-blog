@@ -56,8 +56,8 @@ export default defineConfig({
       {
         text: "博客",
         items: [
-          { text: "第一条博客", link: "/blogs/XFeng" },
-          // { text: "第二条博客", link: "/api-examples" },
+          { text: "计划「2025下」🗓️", link: "/blogs/plan" },
+          { text: "开始🚶", link: "/blogs/XFeng" },
         ],
       },
     ],
