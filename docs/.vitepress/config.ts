@@ -56,6 +56,7 @@ export default defineConfig({
       {
         text: "博客",
         items: [
+          { text: "笔记✍️", link: "/blogs/notes" },
           { text: "📚持续学习...", link: "/blogs/learning" },
           { text: "🗓️计划「2025下」", link: "/blogs/plan" },
           { text: "开始🚶", link: "/blogs/XFeng" },
