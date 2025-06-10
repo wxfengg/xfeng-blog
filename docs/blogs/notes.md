@@ -5,6 +5,27 @@
 
 ---
 
+### **Vue相关**
+
+#### 文件流转图片显示
+
+> 适用场景：后端返回图片流，前端直接显示（可以用img标签）。适用于二维码显示、预览图片显示等
+
+~~~vue
+const captchaImage = ref("")
+const getImage = async () => {
+	// 请求接口获取图片流
+	const res = await getCodeImageApi()
+	// 获取图片
+	const blob = new Blob([res.data], { type: "image/jpeg" })
+  	captchaImage.value = URL.createObjectURL(blob)
+} 
+~~~
+
+
+
+<br />
+
 ### **Git**
 
 #### 配置
