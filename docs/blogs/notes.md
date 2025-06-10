@@ -11,7 +11,7 @@
 
 > 适用场景：后端返回图片流，前端直接显示（可以用img标签）。适用于二维码显示、预览图片显示等
 
-~~~vue
+~~~js
 const captchaImage = ref("")
 const getImage = async () => {
 	// 请求接口获取图片流
