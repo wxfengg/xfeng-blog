@@ -1,76 +1,1079 @@
 /**
- * Customize default theme styling by overriding CSS variables:
- * https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/styles/vars.css
+ * Apple-inspired Design System for VitePress
+ * Features: Glassmorphism, rounded corners, shadows, smooth animations
  */
 
-/**
- * Colors
- *
- * Each colors have exact same color scale system with 3 levels of solid
- * colors with different brightness, and 1 soft color.
- *
- * - `XXX-1`: The most solid color used mainly for colored text. It must
- *   satisfy the contrast ratio against when used on top of `XXX-soft`.
- *
- * - `XXX-2`: The color used mainly for hover state of the button.
- *
- * - `XXX-3`: The color for solid background, such as bg color of the button.
- *   It must satisfy the contrast ratio with pure white (#ffffff) text on
- *   top of it.
- *
- * - `XXX-soft`: The color used for subtle background such as custom container
- *   or badges. It must satisfy the contrast ratio when putting `XXX-1` colors
- *   on top of it.
- *
- *   The soft color must be semi transparent alpha channel. This is crucial
- *   because it allows adding multiple "soft" colors on top of each other
- *   to create a accent, such as when having inline code block inside
- *   custom containers.
- *
- * - `default`: The color used purely for subtle indication without any
- *   special meanings attached to it such as bg color for menu hover state.
- *
- * - `brand`: Used for primary brand colors, such as link text, button with
- *   brand theme, etc.
- *
- * - `tip`: Used to indicate useful information. The default theme uses the
- *   brand color for this by default.
- *
- * - `warning`: Used to indicate warning to the users. Used in custom
- *   container, badges, etc.
- *
- * - `danger`: Used to show error, or dangerous message to the users. Used
- *   in custom container, badges, etc.
- * -------------------------------------------------------------------------- */
-
 :root {
-  --vp-c-brand-1: #5e3af2;
-  --vp-c-brand-2: #694aea;
-  --vp-c-brand-3: #7759f1;
+  /* Apple Color Palette */
+  --vp-c-brand-1: #007AFF;
+  --vp-c-brand-2: #0064D2;
+  --vp-c-brand-3: #004FB3;
+  
+  /* Apple Gray Scale */
+  --vp-c-gray-1: #1D1D1F;
+  /* --vp-c-gray-2: #2C2C2E;
+  --vp-c-gray-3: #3A3A3C; */
+  --vp-c-gray-4: #48484A;
+  --vp-c-gray-5: #636366;
+  --vp-c-gray-6: #8E8E93;
+  
+  /* Apple Background Colors */
+  --vp-c-bg: #FFFFFF;
+  --vp-c-bg-alt: #F2F2F7;
+  --vp-c-bg-soft: rgba(255, 255, 255, 0.8);
+  --vp-c-bg-elv: rgba(255, 255, 255, 0.95);
+  
+  /* Apple Surfaces */
+  --vp-c-surface-1: rgba(255, 255, 255, 0.7);
+  --vp-c-surface-2: rgba(255, 255, 255, 0.8);
+  --vp-c-surface-3: rgba(255, 255, 255, 0.9);
+  
+  /* Apple Shadows */
+  --vp-shadow-1: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --vp-shadow-2: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  --vp-shadow-3: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  --vp-shadow-4: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  --vp-shadow-5: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+  
+  /* Apple Border Radius */
+  --vp-radius-small: 8px;
+  --vp-radius-medium: 12px;
+  --vp-radius-large: 16px;
+  --vp-radius-xl: 20px;
+  --vp-radius-2xl: 24px;
+  
+  /* Glassmorphism */
+  --vp-glass-bg: rgba(255, 255, 255, 0.25);
+  --vp-glass-border: rgba(255, 255, 255, 0.18);
+  --vp-glass-backdrop: blur(20px);
+  
+  /* Hero Colors */
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(
+    135deg,
+    #007AFF 0%,
+    #5856D6 25%,
+    #AF52DE 50%,
+    #FF2D92 75%,
+    #FF9500 100%
+  );
+  
+  /* Hero Image Background */
+  --vp-home-hero-image-background-image: linear-gradient(
+    135deg,
+    rgba(0, 122, 255, 0.3) 0%,
+    rgba(88, 86, 214, 0.3) 25%,
+    rgba(175, 82, 222, 0.3) 50%,
+    rgba(255, 45, 146, 0.3) 75%,
+    rgba(255, 149, 0, 0.3) 100%
+  );
+  --vp-home-hero-image-filter: blur(60px);
 }
 
 .dark {
-  --vp-c-brand-1: #9b85f5;
-  --vp-c-brand-2: #7759f1;
-  --vp-c-brand-3: #615ced;
+  /* Dark Mode Apple Colors */
+  --vp-c-brand-1: #0A84FF;
+  --vp-c-brand-2: #007AFF;
+  --vp-c-brand-3: #0064D2;
+  
+  /* Dark Mode Backgrounds */
+  --vp-c-bg: #000000;
+  --vp-c-bg-alt: #1C1C1E;
+  --vp-c-bg-soft: rgba(28, 28, 30, 0.8);
+  --vp-c-bg-elv: rgba(44, 44, 46, 0.95);
+  
+  /* Dark Mode Surfaces */
+  --vp-c-surface-1: rgba(44, 44, 46, 0.7);
+  --vp-c-surface-2: rgba(58, 58, 60, 0.8);
+  --vp-c-surface-3: rgba(72, 72, 74, 0.9);
+  
+  /* Dark Mode Glassmorphism */
+  --vp-glass-bg: rgba(44, 44, 46, 0.25);
+  --vp-glass-border: rgba(255, 255, 255, 0.08);
 }
 
-:root {
-  /* hero标题渐变色 */
-  --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: -webkit-linear-gradient(
-    120deg,
-    #5e3af2,
-    #00f6c0
-  );
+/* =============================================
+   Apple-style Global Styles
+   ============================================= */
 
-  /*hero logo背景渐变色 */
-  --vp-home-hero-image-background-image: linear-gradient(
-    -45deg,
-    #5f3af2c8 50%,
-    #47cbff7e 50%
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Body background with subtle gradient */
+body {
+  background: linear-gradient(135deg, 
+    var(--vp-c-bg) 0%, 
+    var(--vp-c-bg-alt) 100%);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* =============================================
+   Navigation Bar - Apple Style
+   ============================================= */
+
+.VPNav {
+  /* backdrop-filter: var(--vp-glass-backdrop);
+  -webkit-backdrop-filter: var(--vp-glass-backdrop);
+  background: var(--vp-glass-bg) !important;
+  border-bottom: 1px solid var(--vp-glass-border);
+  box-shadow: var(--vp-shadow-1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); */
+}
+
+.VPNavBar {
+  background: transparent !important;
+  border-bottom: none !important;
+  background-color: transparent !important;
+}
+
+.content-body {
+  background-color: transparent !important;
+}
+
+.VPNavBar:not(.home.top) {
+  backdrop-filter: var(--vp-glass-backdrop);
+  -webkit-backdrop-filter: var(--vp-glass-backdrop);
+  background: var(--vp-glass-bg) !important;
+  border-bottom: 1px solid var(--vp-glass-border);
+  box-shadow: var(--vp-shadow-1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.VPNavBarTitle .title {
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  background: var(--vp-home-hero-name-background);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Navigation Menu Items */
+.VPNavBarMenu .VPLink {
+  border-radius: var(--vp-radius-small);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 500;
+}
+
+.VPNavBarMenu .VPLink:hover {
+  background: var(--vp-c-surface-1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transform: translateY(-1px);
+}
+
+.VPLocalNav {
+  backdrop-filter: var(--vp-glass-backdrop);
+  -webkit-backdrop-filter: var(--vp-glass-backdrop);
+  background: var(--vp-glass-bg) !important;
+  /* border-bottom: 1px solid var(--vp-glass-border); */
+  /* box-shadow: var(--vp-shadow-1); */
+}
+
+/* =============================================
+   Sidebar - Apple Style
+   ============================================= */
+
+.VPSidebar {
+  backdrop-filter: var(--vp-glass-backdrop);
+  -webkit-backdrop-filter: var(--vp-glass-backdrop);
+  background: var(--vp-glass-bg) !important;
+  border-right: 1px solid var(--vp-glass-border);
+  box-shadow: var(--vp-shadow-2);
+}
+
+.VPSidebarItem .link {
+  border-radius: var(--vp-radius-medium);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  margin: 4px 0;
+  padding-left: 15px;
+
+}
+
+.VPSidebarItem .link:hover {
+  transform: translateX(10px);
+  background: var(--vp-glass-bg);
+  backdrop-filter: var(--vp-glass-backdrop);
+  -webkit-backdrop-filter: var(--vp-glass-backdrop);
+  border: 1px solid var(--vp-glass-border);
+  box-shadow: var(--vp-shadow-1);
+}
+
+.VPSidebarItem .link.active{
+  background: var(--vp-c-brand-1);
+  color: white;
+  box-shadow: var(--vp-shadow-2);
+}
+
+.VPSidebarItem.level-1.is-active > .item .link  {
+  transform: translateX(10px);
+  background: var(--vp-glass-bg);
+  backdrop-filter: var(--vp-glass-backdrop);
+  -webkit-backdrop-filter: var(--vp-glass-backdrop);
+  border: 1px solid var(--vp-glass-border);
+  box-shadow: var(--vp-shadow-1);
+}
+
+/* =============================================
+   Content Area - Apple Style
+   ============================================= */
+
+.VPContent {
+  background: transparent;
+}
+
+/* .VPDoc {
+  background: var(--vp-c-surface-3);
+  backdrop-filter: var(--vp-glass-backdrop);
+  -webkit-backdrop-filter: var(--vp-glass-backdrop);
+  border-radius: var(--vp-radius-large);
+  box-shadow: var(--vp-shadow-3);
+  margin: 20px;
+  padding: 32px;
+  border: 1px solid var(--vp-glass-border);
+} */
+
+/* =============================================
+   Hero Section - Apple Style
+   ============================================= */
+
+.VPHero {
+  padding: 80px 24px 60px;
+  text-align: center;
+}
+
+.VPHeroInfo {
+  background: var(--vp-glass-bg);
+  backdrop-filter: var(--vp-glass-backdrop);
+  -webkit-backdrop-filter: var(--vp-glass-backdrop);
+  border-radius: var(--vp-radius-2xl);
+  border: 1px solid var(--vp-glass-border);
+  box-shadow: var(--vp-shadow-4);
+  padding: 48px 32px;
+  margin: 0 auto;
+  max-width: 800px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.VPHeroInfo:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--vp-shadow-5);
+}
+
+.VPHero .name {
+  font-size: clamp(32px, 8vw, 64px);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.VPHero .text {
+  font-size: clamp(20px, 4vw, 32px);
+  font-weight: 600;
+  color: var(--vp-c-text-2);
+  margin-bottom: 12px;
+}
+
+.VPHero .tagline {
+  font-size: clamp(16px, 3vw, 24px);
+  color: var(--vp-c-text-3);
+  margin-bottom: 32px;
+  opacity: 0.8;
+}
+
+/* Hero Action Buttons */
+.VPHero .actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.VPButton {
+  border-radius: var(--vp-radius-medium);
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--vp-glass-border);
+}
+
+.VPButton.brand {
+  background: var(--vp-c-brand-1);
+  box-shadow: var(--vp-shadow-2);
+}
+
+.VPButton.brand:hover {
+  background: var(--vp-c-brand-2);
+  transform: translateY(-2px);
+  box-shadow: var(--vp-shadow-3);
+}
+
+.VPButton.alt {
+  background: var(--vp-glass-bg);
+  color: var(--vp-c-text-1);
+  box-shadow: var(--vp-shadow-1);
+}
+
+.VPButton.alt:hover {
+  background: var(--vp-c-surface-2);
+  transform: translateY(-2px);
+  box-shadow: var(--vp-shadow-2);
+}
+
+/* =============================================
+   Features Section - Apple Style
+   ============================================= */
+
+.VPFeatures {
+  padding: 60px 24px;
+}
+
+.VPFeature {
+  background: var(--vp-glass-bg);
+  backdrop-filter: var(--vp-glass-backdrop);
+  -webkit-backdrop-filter: var(--vp-glass-backdrop);
+  border-radius: var(--vp-radius-large);
+  border: 1px solid var(--vp-glass-border);
+  box-shadow: var(--vp-shadow-2);
+  padding: 32px 24px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 100%;
+}
+
+.VPFeature:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--vp-shadow-4);
+  border-color: var(--vp-c-brand-1);
+}
+
+.VPFeature .icon {
+  margin-bottom: 20px;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.VPFeature:hover .icon {
+  transform: scale(1.1);
+}
+
+.VPFeature .title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--vp-c-text-1);
+}
+
+.VPFeature .details {
+  color: var(--vp-c-text-2);
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+/* =============================================
+   Code Blocks - Apple Style
+   ============================================= */
+
+div[class*="language-"] {
+  border-radius: var(--vp-radius-medium);
+  box-shadow: var(--vp-shadow-2);
+  border: 1px solid var(--vp-glass-border);
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+div[class*="language-"] pre {
+  background: var(--vp-glass-bg) !important;
+}
+
+/* =============================================
+   Custom Containers - Apple Style
+   ============================================= */
+
+.custom-block {
+  border-radius: var(--vp-radius-medium);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--vp-glass-border);
+  box-shadow: var(--vp-shadow-1);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.custom-block:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--vp-shadow-2);
+}
+
+/* =============================================
+   Footer - Apple Style
+   ============================================= */
+
+.VPFooter {
+  background: var(--vp-glass-bg);
+  backdrop-filter: var(--vp-glass-backdrop);
+  -webkit-backdrop-filter: var(--vp-glass-backdrop);
+  border-top: 1px solid var(--vp-glass-border);
+  border-radius: var(--vp-radius-large) var(--vp-radius-large) 0 0;
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* =============================================
+   Scrollbar - Apple Style
+   ============================================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--vp-c-gray-5);
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--vp-c-gray-4);
+}
+
+/* =============================================
+   Dark Mode Adjustments
+   ============================================= */
+
+.dark .VPHeroInfo {
+  background: rgba(28, 28, 30, 0.8);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark .VPFeature {
+  background: rgba(44, 44, 46, 0.8);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* .dark .VPDoc {
+  background: rgba(28, 28, 30, 0.9);
+  border-color: rgba(255, 255, 255, 0.1);
+} */
+
+/* =============================================
+   Page Transitions - Apple Style
+   ============================================= */
+
+/* Page fade transition */
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fade-enter-from {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+/* =============================================
+   Enhanced Link Styles
+   ============================================= */
+
+/* Links in content */
+/* .VPDoc a:not(.VPButton) {
+  color: var(--vp-c-brand-1);
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 4px;
+  padding: 2px 4px;
+  margin: -2px -4px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+} */
+
+/* .VPDoc a:not(.VPButton):hover {
+  background: rgba(0, 122, 255, 0.1);
+  transform: translateY(-1px);
+} */
+
+/* .VPDoc a:not(.VPButton):active {
+  transform: translateY(0);
+} */
+
+/* =============================================
+   Enhanced Tables - Apple Style
+   ============================================= */
+
+/* .VPDoc table {
+  border-radius: var(--vp-radius-medium);
+  overflow: hidden;
+  box-shadow: var(--vp-shadow-1);
+  border: 1px solid var(--vp-glass-border);
+  background: var(--vp-glass-bg);
+  backdrop-filter: var(--vp-glass-backdrop);
+  -webkit-backdrop-filter: var(--vp-glass-backdrop);
+}
+
+.VPDoc th {
+  background: var(--vp-c-surface-1);
+  color: var(--vp-c-text-1);
+  font-weight: 600;
+  letter-spacing: 0.025em;
+}
+
+.VPDoc td {
+  border-color: var(--vp-glass-border);
+}
+
+.VPDoc tr:hover {
+  background: var(--vp-c-surface-1);
+} */
+
+/* =============================================
+   Enhanced Search - Apple Style
+   ============================================= */
+
+.DocSearch-Button {
+  border-radius: var(--vp-radius-medium) !important;
+  background: var(--vp-glass-bg) !important;
+  backdrop-filter: var(--vp-glass-backdrop) !important;
+  -webkit-backdrop-filter: var(--vp-glass-backdrop) !important;
+  border: 1px solid var(--vp-glass-border) !important;
+  box-shadow: var(--vp-shadow-1) !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.DocSearch-Button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: var(--vp-shadow-2) !important;
+}
+
+/* =============================================
+   Enhanced Blockquotes - Apple Style
+   ============================================= */
+
+/* .VPDoc blockquote {
+  border-radius: var(--vp-radius-medium);
+  background: var(--vp-glass-bg);
+  backdrop-filter: var(--vp-glass-backdrop);
+  -webkit-backdrop-filter: var(--vp-glass-backdrop);
+  border: 1px solid var(--vp-glass-border);
+  box-shadow: var(--vp-shadow-1);
+  margin: 20px 0;
+  padding: 20px 24px;
+  position: relative;
+  border-left: 4px solid var(--vp-c-brand-1);
+}
+
+.VPDoc blockquote::before {
+  content: '"';
+  font-size: 60px;
+  color: var(--vp-c-brand-1);
+  opacity: 0.3;
+  position: absolute;
+  top: -10px;
+  left: 16px;
+  font-family: Georgia, serif;
+}
+
+.VPDoc blockquote p {
+  margin: 0;
+  font-style: italic;
+  color: var(--vp-c-text-2);
+  padding-left: 40px;
+} */
+
+/* =============================================
+   Enhanced Images - Apple Style
+   ============================================= */
+
+/* .VPDoc img {
+  border-radius: var(--vp-radius-medium);
+  box-shadow: var(--vp-shadow-2);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid var(--vp-glass-border);
+}
+
+.VPDoc img:hover {
+  transform: scale(1.02);
+  box-shadow: var(--vp-shadow-3);
+} */
+
+/* =============================================
+   Enhanced Badges - Apple Style
+   ============================================= */
+
+.VPBadge {
+  border-radius: var(--vp-radius-small) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.025em !important;
+  box-shadow: var(--vp-shadow-1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+/* =============================================
+   Loading States - Apple Style
+   ============================================= */
+
+.loading-skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--vp-c-surface-1) 25%,
+    var(--vp-c-surface-2) 50%,
+    var(--vp-c-surface-1) 75%
   );
-  --vp-home-hero-image-filter: blur(76px);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--vp-radius-medium);
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* =============================================
+   Utility Classes - Apple Style
+   ============================================= */
+
+.apple-glass {
+  background: var(--vp-glass-bg);
+  backdrop-filter: var(--vp-glass-backdrop);
+  -webkit-backdrop-filter: var(--vp-glass-backdrop);
+  border: 1px solid var(--vp-glass-border);
+  border-radius: var(--vp-radius-medium);
+}
+
+.apple-shadow-sm { box-shadow: var(--vp-shadow-1); }
+.apple-shadow { box-shadow: var(--vp-shadow-2); }
+.apple-shadow-md { box-shadow: var(--vp-shadow-3); }
+.apple-shadow-lg { box-shadow: var(--vp-shadow-4); }
+.apple-shadow-xl { box-shadow: var(--vp-shadow-5); }
+
+.apple-radius-sm { border-radius: var(--vp-radius-small); }
+.apple-radius { border-radius: var(--vp-radius-medium); }
+.apple-radius-lg { border-radius: var(--vp-radius-large); }
+.apple-radius-xl { border-radius: var(--vp-radius-xl); }
+.apple-radius-2xl { border-radius: var(--vp-radius-2xl); }
+
+/* =============================================
+   Print Styles - Apple Style
+   ============================================= */
+
+@media print {
+  .apple-background,
+  .mobile-dock,
+  .scroll-progress,
+  .VPNav,
+  .VPSidebar {
+    display: none !important;
+  }
+  
+  .VPDoc {
+    box-shadow: none !important;
+    border: 1px solid #ddd !important;
+    margin: 0 !important;
+  }
+  
+  .apple-card,
+  .apple-button {
+    box-shadow: none !important;
+    border: 1px solid #ddd !important;
+  }
+}
+
+/* =============================================
+   Accessibility Enhancements
+   ============================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .particles,
+  .gradient-orbs,
+  .mesh-gradient {
+    animation: none !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .apple-card,
+  .apple-button,
+  .VPDoc {
+    border: 2px solid currentColor !important;
+  }
+  
+  .glass-bg,
+  .button-background,
+  .card-background {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+}
+
+/* Focus indicators for keyboard navigation */
+.apple-card:focus-visible,
+.apple-button:focus-visible {
+  outline: 3px solid var(--vp-c-brand-1);
+  outline-offset: 2px;
+}
+
+/* =============================================
+   Performance Optimizations
+   ============================================= */
+
+/* GPU acceleration for smooth animations */
+/* .apple-card,
+.apple-button,
+.VPDoc,
+.VPFeature {
+  will-change: transform;
+  transform: translateZ(0);
+} */
+
+/* 优化背景滤镜性能 */
+/* .VPNav,
+.VPSidebar,
+.apple-card {
+  contain: layout style paint;
+} */
+
+/* =============================================
+   Advanced Animations and Interactions
+   ============================================= */
+
+/* Floating animation for hero elements */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Pulse animation for interactive elements */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 122, 255, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(0, 122, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 122, 255, 0);
+  }
+}
+
+/* Sparkle animation for special effects */
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Hero section enhancements */
+.VPHero .name {
+  background: var(--vp-home-hero-name-background);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: pulse 2s infinite;
+}
+
+/* Feature cards hover effects */
+.VPFeature {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: var(--vp-radius-large);
+  backdrop-filter: var(--vp-glass-backdrop);
+  -webkit-backdrop-filter: var(--vp-glass-backdrop);
+  background: var(--vp-glass-bg);
+  border: 1px solid var(--vp-glass-border);
+}
+
+.VPFeature:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--vp-shadow-4);
+  background: var(--vp-c-surface-2);
+}
+
+.VPFeature .VPImage {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.VPFeature:hover .VPImage {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Button enhancements */
+.VPButton {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.VPButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.VPButton:hover::before {
+  left: 100%;
+}
+
+.VPButton:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--vp-shadow-3);
+}
+
+/* Content area improvements */
+/* .VPContent {
+  backdrop-filter: var(--vp-glass-backdrop);
+  -webkit-backdrop-filter: var(--vp-glass-backdrop);
+} */
+
+/* Code blocks enhancement */
+.vp-code-group,
+div[class*="language-"] {
+  border-radius: var(--vp-radius-medium);
+  backdrop-filter: var(--vp-glass-backdrop);
+  -webkit-backdrop-filter: var(--vp-glass-backdrop);
+  background: var(--vp-c-surface-2) !important;
+  border: 1px solid var(--vp-glass-border);
+  box-shadow: var(--vp-shadow-1);
+}
+
+/* 滚动进度指示器 */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--vp-c-brand-1),
+    var(--vp-c-brand-2),
+    #5856D6
+  );
+  transform-origin: 0%;
+  z-index: 9999;
+  transition: transform 0.1s;
+}
+
+/* Floating action button */
+.floating-action-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 56px;
+  height: 56px;
+  background: var(--vp-c-brand-1);
+  border: none;
+  border-radius: 50%;
+  box-shadow: var(--vp-shadow-3);
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.floating-action-button:hover {
+  transform: scale(1.1);
+  box-shadow: var(--vp-shadow-4);
+  background: var(--vp-c-brand-2);
+}
+
+.floating-action-button:active {
+  transform: scale(0.95);
+}
+
+/* Page transition effects */
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+/* Loading skeleton */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--vp-c-surface-1) 25%,
+    var(--vp-c-surface-2) 50%,
+    var(--vp-c-surface-1) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* 可点击元素的涟漪效果 */
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.ripple:active::after {
+  width: 300px;
+  height: 300px;
+}
+
+/* 内容平滑出现动画 */
+.appear-animation {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: appear 0.6s ease-out forwards;
+}
+
+@keyframes appear {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Stagger animation for lists */
+.stagger-item {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: appear 0.5s ease-out forwards;
+}
+
+.stagger-item:nth-child(1) { animation-delay: 0.1s; }
+.stagger-item:nth-child(2) { animation-delay: 0.2s; }
+.stagger-item:nth-child(3) { animation-delay: 0.3s; }
+.stagger-item:nth-child(4) { animation-delay: 0.4s; }
+.stagger-item:nth-child(5) { animation-delay: 0.5s; }
+
+/* Parallax scrolling effect */
+.parallax {
+  transform: translateZ(0);
+  transition: transform 0.1s;
+}
+
+/* 玻璃形态增强 */
+.glass-morphism {
+  background: var(--vp-glass-bg);
+  backdrop-filter: var(--vp-glass-backdrop);
+  -webkit-backdrop-filter: var(--vp-glass-backdrop);
+  border: 1px solid var(--vp-glass-border);
+  border-radius: var(--vp-radius-medium);
+  box-shadow: var(--vp-shadow-2);
+}
+
+/* Interactive hover states */
+.interactive-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.interactive-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--vp-shadow-3);
+}
+
+/* Focus states for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--vp-c-brand-1);
+  outline-offset: 2px;
+  border-radius: var(--vp-radius-small);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --vp-glass-bg: rgba(255, 255, 255, 0.9);
+    --vp-glass-border: rgba(0, 0, 0, 0.3);
+  }
+  
+  .dark {
+    --vp-glass-bg: rgba(0, 0, 0, 0.9);
+    --vp-glass-border: rgba(255, 255, 255, 0.3);
+  }
 }
 
 

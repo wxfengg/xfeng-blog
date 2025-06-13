@@ -56,6 +56,9 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }: MouseEvent) => {
 </script>
 
 <template>
+  <AppleBackground />
+  <AppleNavEnhancement />
+  <AppleFloatingActionButton />   
   <Layout>
     <template #doc-footer-before> </template>
     <template #doc-after>

@@ -50,6 +50,7 @@ export default defineConfig({
     nav: [
       { text: "首页", link: "/" },
       { text: "博客", link: "/blogs/XFeng" },
+      { text: "组件展示", link: "/apple-components" },
     ],
     // 侧边栏
     sidebar: [

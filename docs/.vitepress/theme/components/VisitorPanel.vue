@@ -1,6 +1,6 @@
 <!-- .vitepress/theme/components/VisitorPanel.vue -->
 <template>
-  <div class="panel">
+  <div class="panel ">
     <div class="container">
       <section class="grid">
         <span class="text">
@@ -43,7 +43,7 @@ const onLinkUmiHandle = () => {
 }
 
 .container {
-  background-color: var(--vp-c-bg-soft);
+  /* background-color: var(--vp-c-bg-soft); */
   border-radius: 8px;
   width: 100%;
   min-height: 32px;
