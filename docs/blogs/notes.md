@@ -105,9 +105,34 @@ git remote add origin 仓库地址
 git push -u origin main
 ~~~
 
-
-
 #### 其他
+场景：本地提交了代码想取消本次体检让代码退回或者重新修改代码
+
+```bash
+# 这个命令会撤销最近一次的本地提交，但保留你的代码更改在暂存区（staged），你可以重新提交或修改后再提交
+git reset --soft HEAD~1
+```
+
+场景：删除了本地的提交想要恢复
+
+~~~bash
+# 查看日志获取提交hash
+git reflog
+
+# 根据提交hash恢复提交
+git reset --hard {commit_hash}
+~~~
+
+场景：更改提交信息不改动代码
+
+~~~bash
+# 输入命令进入修改
+git commit --amend
+~~~
+
+
+
+<br />
 
 更加详细用法参考文章：[Git 指令看这一篇就够 —— 各种工作场景的 git 指令大全](https://www.cnblogs.com/jamiechoo/articles/18408791)
 
