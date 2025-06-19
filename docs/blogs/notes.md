@@ -24,6 +24,115 @@ const getImage = async () => {
 
 
 
+#### 下载图片，触发浏览器保存
+
+> 适用场景：后端返回文件地址，想实现点击下载，触发浏览器保存
+
+方法一（代码简单，但如果服务器设置图片不能下载，则无法触发浏览器保存）：
+
+~~~js
+const downloadFile = (url: string) => {
+  const link = document.createElement("a")
+  link.href = url
+  link.download = "文件名"
+  document.body.appendChild(link)
+  link.click()
+  document.body.removeChild(link)
+}
+~~~
+
+
+
+方法二（比较万能，但是会有跨域问题，原理是使用canvas）：
+
+~~~js
+const downloadFile = (url: string, name: string) => {
+  let image = new Image()
+  image.setAttribute("crossOrigin", "anonymous")
+  image.src = url
+  image.onload = () => {
+    let canvas = document.createElement("canvas")
+    canvas.width = image.width
+    canvas.height = image.height
+    let ctx = canvas.getContext("2d")
+    if (ctx) {
+      ctx.drawImage(image, 0, 0, image.width, image.height)
+      canvas.toBlob((blob) => {
+        if (blob) {
+          let url = URL.createObjectURL(blob)
+          let eleLink = document.createElement("a")
+  		  eleLink.download = name
+          eleLink.href = href
+          eleLink.click()
+          eleLink.remove()
+          // 用完释放URL对象
+          URL.revokeObjectURL(url)
+        }
+      })
+    }
+  }
+}
+~~~
+
+
+
+#### 下载文件，触发浏览器保存（终极方案）
+
+> 适用场景：后端返回文件地址，想实现点击下载，触发浏览器保存。无论是图片、文件都可以，可以接受流也可以接受文件URL
+
+~~~js
+/**
+ * 通用文件下载方法，支持图片、Excel、PDF等文件类型
+ * @param {string|Blob} source - 文件URL或Blob对象
+ * @param {string} filename - 下载的文件名（带扩展名）
+ */
+export const downloadFile = async (source: string | Blob, filename: string) => {
+  if (!source) return
+
+  try {
+    // 处理Blob对象
+    if (source instanceof Blob) {
+      const url = URL.createObjectURL(source)
+      const link = document.createElement("a")
+      link.href = url
+      link.download = filename
+      document.body.appendChild(link)
+      link.click()
+
+      // 清理资源
+      setTimeout(() => {
+        document.body.removeChild(link)
+        URL.revokeObjectURL(url)
+      }, 100)
+      return
+    }
+
+    // 处理URL
+    // 对于跨域文件，使用 fetch 获取文件内容
+    const response = await fetch(source)
+    const blob = await response.blob()
+
+    // 创建临时 URL
+    const blobUrl = window.URL.createObjectURL(blob)
+
+    const link = document.createElement("a")
+    link.href = blobUrl
+    link.download = filename // 添加扩展名
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+
+    // 清理临时 URL
+    window.URL.revokeObjectURL(blobUrl)
+  } catch (error) {
+    // 如果 fetch 失败，回退到直接打开
+    window.open(source as string)
+  }
+}
+~~~
+
+
+
 <br />
 
 ### **Git**
