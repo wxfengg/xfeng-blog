@@ -245,3 +245,34 @@ git commit --amend
 
 更加详细用法参考文章：[Git 指令看这一篇就够 —— 各种工作场景的 git 指令大全](https://www.cnblogs.com/jamiechoo/articles/18408791)
 
+
+
+<br />
+
+### electron
+
+#### 加密打包后的程序源码
+
+1.安装**`asar`**
+
+~~~bash
+# pnpm下载
+pnpm i asar -g
+
+# npm下载
+npm install asar -g
+~~~
+
+2.在resources目录下使用asar指令进行加密
+
+~~~bash
+asar pack ./app app.asar
+~~~
+
+加密后结果如下：
+
+![image-20250624103635983](assets/image-20250624103635983.png)
+
+
+
+3.删除app文件后重新打开程序，没问题代表加密成功
