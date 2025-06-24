@@ -32,7 +32,8 @@
 
 **已上线**🎉🎉 [`ImageCompressionTool`](https://github.com/wxfengg/ImageCompressionTool)
 
-后面计划用electron打包成一个桌面的exe文件，完成后会同步上传
+~~后面计划用electron打包成一个桌面的exe文件，完成后会同步上传~~
+**已上线**🎉🎉 [`ImageCompressionTool`](https://github.com/wxfengg/ImageCompressionTool) 下载ImageCompressionTool.zip文件，解压后直接打开ImageCompressionTool.exe即可使用
 
 <br/>
 

@@ -222,6 +222,8 @@ git push -u origin main
 git reset --soft HEAD~1
 ```
 
+
+
 场景：删除了本地的提交想要恢复
 
 ~~~bash
@@ -232,6 +234,8 @@ git reflog
 git reset --hard {commit_hash}
 ~~~
 
+
+
 场景：更改提交信息不改动代码
 
 ~~~bash
@@ -241,7 +245,58 @@ git commit --amend
 
 
 
+场景：GitHub默认不允许提交超过100M的文件，但是我们又想提交超过100M(需要先把上次提交撤销)
+
+1.在项目的目录下打开终端，下载 `git lfs` 管理大文件：
+
+~~~bash
+git lfs install
+~~~
+
+2.添加需要上传的文件信息
+
+~~~bash
+git lfs track [文件路径]
+~~~
+
+eg： git lfs track ./test/demo.txt
+
+3.输入命令后会生成 `.gitattributes` 文件，这时候把它跟需要上传的大文件一起提交即可
+
+
+
 <br />
 
 更加详细用法参考文章：[Git 指令看这一篇就够 —— 各种工作场景的 git 指令大全](https://www.cnblogs.com/jamiechoo/articles/18408791)
 
+
+
+<br />
+
+### electron
+
+#### 加密打包后的程序源码
+
+1.安装**`asar`**
+
+~~~bash
+# pnpm下载
+pnpm i asar -g
+
+# npm下载
+npm install asar -g
+~~~
+
+2.在resources目录下使用asar指令进行加密
+
+~~~bash
+asar pack ./app app.asar
+~~~
+
+加密后结果如下：
+
+![image-20250624103635983](assets/image-20250624103635983.png)
+
+
+
+3.删除app文件后重新打开程序，没问题代表加密成功
