@@ -57,6 +57,7 @@ export default defineConfig({
       {
         text: "博客",
         items: [
+          { text: "VueConf2025🎉", link: "/blogs/vueconf2025" },
           { text: "基于Vue3 + Element Plus项目实现el-table表格操作列自适应宽度", link: "/blogs/opreation-column" },
           { text: "笔记✍️", link: "/blogs/notes" },
           { text: "📚持续学习...", link: "/blogs/learning" },
