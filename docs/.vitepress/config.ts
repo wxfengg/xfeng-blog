@@ -76,5 +76,5 @@ export default defineConfig({
     }
   },
   // 部署的时候需要注意该参数避免样式丢失
-  base: "/xfeng-blog/",
+  base: "/blogs",
 });
