@@ -34,3 +34,57 @@
 
 
 #### 闭包的内存泄露
+
+
+
+
+### this
+
+this的内容跟定义的位置无关，只跟它的被调用位置相关。
+
+```js
+function fn() {
+  console.log(this)
+}
+fn() // ==> Window
+
+const obj = {
+  name: "xfeng",
+  fn: fn
+}
+obj.fn() // ==> obj
+
+function fn2() {
+  return function fn3() {
+    console.log(this)
+  }
+}
+const res = fn2()
+res() // ==> Window
+
+const obj2 = {
+  name: "feng",
+  fn: fn2
+}
+const res2 = obj2.fn
+res2() // ==> Window
+```
+
+
+
+####  call()和apply()
+
+`call()` 和 `apply()` 都可以指定this的绑定
+
+区别是两种函数的参数方式不一样
+
+- `call()` 使用逗号方式 => call(this, arg1, arg2, ...)
+- `apply()` 使用数组的方式 => apply(this, [arg1, arg2, ...])
+
+
+
+#### 绑定优先级
+
+new绑定 > 显示绑定(apply/call/bind) > 隐式绑定(obj.fn()) > 默认绑定(独立函数调用)
+
+ 
