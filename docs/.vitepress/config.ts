@@ -1,4 +1,5 @@
 import { defineConfig } from "vitepress";
+import { mdList } from "../setting";
 
 export default defineConfig({
   title: "XFeng's Blog",
@@ -49,21 +50,14 @@ export default defineConfig({
     // 导航栏按钮
     nav: [
       { text: "首页", link: "/" },
-      { text: "博客", link: "/blogs/XFeng" },
+      { text: "博客", link: mdList[0].link },
       { text: "组件展示", link: "/apple-components" },
     ],
     // 侧边栏
     sidebar: [
       {
         text: "博客",
-        items: [
-          { text: "VueConf2025🎉", link: "/blogs/vueconf2025" },
-          { text: "基于Vue3 + Element Plus项目实现el-table表格操作列自适应宽度", link: "/blogs/opreation-column" },
-          { text: "笔记✍️", link: "/blogs/notes" },
-          { text: "📚持续学习...", link: "/blogs/learning" },
-          { text: "🗓️计划「2025下」", link: "/blogs/plan" },
-          { text: "开始🚶", link: "/blogs/XFeng" },
-        ],
+        items: mdList,
       },
     ],
     // 社交链接
@@ -71,10 +65,11 @@ export default defineConfig({
     // 404找不到页面
     notFound: {
       title: "抱歉，您访问的资源不存在",
-      quote: "您好，您访问的资源不存在或已被删除。如果您有什么需求或建议， 请联系我。 邮箱：wxfengg@gmail.com",
+      quote:
+        "您好，您访问的资源不存在或已被删除。如果您有什么需求或建议， 请联系我。 邮箱：wxfengg@gmail.com",
       linkText: "返回首页",
-    }
+    },
   },
   // 部署的时候需要注意该参数避免样式丢失
-  base: "/blogs",
+  base: "/xfeng-blog",
 });
