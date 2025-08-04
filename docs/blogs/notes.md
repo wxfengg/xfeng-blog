@@ -5,6 +5,38 @@
 
 ---
 
+### JS/TS相关
+
+#### 取默认值
+
+下面是两种常见的取默认值写法：
+
+~~~js
+/** example1 */
+const result = object.value || "default"
+
+/** example2 */
+const result = object.value ?? "default"
+~~~
+
+**区别**
+
+- `||` 是逻辑或运算符，当左侧表达式是**假值**(false value)的时候，返回右侧的结果，否则返回左侧的结果
+- `??` 是空值合并运算符，当左侧表达式为 `null` 或 `undefined` 时，返回右侧的结果，否则返回左侧的结果
+
+> 假值(false value)
+>
+> - false
+> - 0
+> - "" (空字符串)
+> - null
+> - undefined
+> - NaN
+
+总体来说 `||` 范围更广包含了 `??` 在内，`??` 只有在 `null` 或 `undefined` 时才会触发。
+
+
+
 ### **Vue相关**
 
 #### 文件流转图片显示
