@@ -58,6 +58,34 @@ const getImage = async () => {
 
 ### CSS相关
 
+#### 通用两栏文字排版做法【grid终极方案】
+
+~~~html
+<style>
+.box {
+  display: grid;
+  grid-template-columns: max-content 1fr; // 两列，第一列宽度自适应内容，第二列占满剩余空间
+  row-gap: 16px;
+  column-gap: 24px;
+  align-items: center;
+}
+</style>
+
+<div class="box">
+  <div>手机号</div>
+  <div>13888888888</div>
+
+  <div>地址</div>
+  <div>广东省深圳市某某区某某街道</div>
+
+  <div>商品支付超时等待订单</div>
+  <div>这是一条很长的label</div>
+
+  <div>L</div>
+  <div>这是一条很短的label</div>
+</div>
+~~~
+
 #### 图片闪烁/呼吸灯效果
 
 ~~~css
