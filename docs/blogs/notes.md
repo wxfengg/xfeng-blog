@@ -7,6 +7,35 @@
 
 ### JS/TS相关
 
+#### 数组对象去重
+
+根据某个字段去重
+
+1.遇到重复保留最后一次出现的数据
+
+~~~js
+const dedupeByKey = <T extends Record<string, any>, K extends keyof T>(array: T[], key: K): T[] => {
+    const map = new Map<T[K], T>()
+    array.foreach(item => map.set(item[key], item))
+    return [...map.values()]
+}
+~~~
+
+2.遇到重复保留第一次出现的数据
+
+~~~js
+const  dedupeByKey = <T extends Record<string, any>, K extends keyof T>(array: T[], key: K): T[] => {
+    const set = new Set<T[K]>()
+    return arrary.filter(item => {
+        if (set.has(item[key])) return false
+        set.add(item[key])
+        return true
+    })
+}
+~~~
+
+
+
 #### 取默认值
 
 下面是两种常见的取默认值写法：
@@ -301,7 +330,27 @@ git push -u origin main
 ~~~
 
 #### 其他
-场景：本地提交了代码想取消本次体检让代码退回或者重新修改代码
+
+场景：提交完了一个 feature ，但是突然发现几个小问题，修改完之后不想新生成一个 commit 
+
+**`--amend`** 会把暂存区的内容与上一次提交合并，重新生成一个新的 commit 替换旧的 commit
+
+**`--no-edit`** 不修改 commit message，直接复用原来的提交信息
+
+🚨 注意：`amend` 会“改变历史”，因为 `amend` 会重写提交（新的 commit hash 会变）。 如果你已经 push 到远程且别人已经基于它开发
+
+请不要随便 `amend`，否则容易引发冲突。
+
+~~~bash
+# 把修改的内容add进去
+git add .
+# 将修改的直接合并到上一个 commit 中，并且使用上一次的提交信息
+git commit --amend --no-edit
+~~~
+
+
+
+场景：本地提交了代码想取消本次提交让代码退回或者重新修改代码
 
 ```bash
 # 这个命令会撤销最近一次的本地提交，但保留你的代码更改在暂存区（staged），你可以重新提交或修改后再提交
