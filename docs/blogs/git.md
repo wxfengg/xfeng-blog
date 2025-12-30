@@ -78,7 +78,61 @@ git push -u origin main
 
 ### 其他
 
-场景：提交完了一个 feature ，但是突然发现几个小问题，修改完之后不想新生成一个 commit
+#### 场景：修改本地git的提交邮箱后，想要对仓库的历史进行更改
+
+1.重新配置正确的用户名和邮箱，参考上面的 [基础配置](#基础) 部分
+
+2.创建存储库的全新裸克隆：
+
+~~~bash
+git clone --bare xxxxx
+~~~
+
+3.进入克隆的文件内，执行以下两个脚本
+
+~~~bash
+# 脚本1 - 对旧邮箱记录修改
+git filter-branch --env-filter '
+OLD_EMAIL="wxf@163.com"
+CORRECT_NAME="XFeng"
+CORRECT_EMAIL="wxfengg@qq.com"
+if [ "$GIT_COMMITTER_EMAIL" = "$OLD_EMAIL" ]
+then
+    export GIT_COMMITTER_NAME="$CORRECT_NAME"
+    export GIT_COMMITTER_EMAIL="$CORRECT_EMAIL"
+fi
+if [ "$GIT_AUTHOR_EMAIL" = "$OLD_EMAIL" ]
+then
+    export GIT_AUTHOR_NAME="$CORRECT_NAME"
+    export GIT_AUTHOR_EMAIL="$CORRECT_EMAIL"
+fi
+' --tag-name-filter cat -- --branches --tags;
+
+# 脚本2 - 对旧用户名记录修改
+git filter-branch --env-filter '
+OLD_NAME="XFeng"
+CORRECT_NAME="XFeng"
+CORRECT_EMAIL="wxfengg@qq.com"
+if [ "$GIT_COMMITTER_NAME" = "$OLD_NAME" ]
+then
+    export GIT_COMMITTER_NAME="$CORRECT_NAME"
+    export GIT_COMMITTER_EMAIL="$CORRECT_EMAIL"
+fi
+if [ "$GIT_AUTHOR_NAME" = "$OLD_NAME" ]
+then
+    export GIT_AUTHOR_NAME="$CORRECT_NAME"
+    export GIT_COMMITTER_EMAIL="$CORRECT_EMAIL"
+fi
+' --tag-name-filter cat -- --branches --tags;
+~~~
+
+4.将更正的历史记录推送上去
+
+~~~bash
+git push --force --tags origin 'refs/heads/*'
+~~~
+
+#### 场景：提交完了一个 feature ，但是突然发现几个小问题，修改完之后不想新生成一个 commit
 
 **`--amend`** 会把暂存区的内容与上一次提交合并，重新生成一个新的 commit 替换旧的 commit
 
@@ -95,14 +149,14 @@ git add .
 git commit --amend --no-edit
 ~~~
 
-场景：本地提交了代码想取消本次提交让代码退回或者重新修改代码
+#### 场景：本地提交了代码想取消本次提交让代码退回或者重新修改代码
 
 ```bash
 # 这个命令会撤销最近一次的本地提交，但保留你的代码更改在暂存区（staged），你可以重新提交或修改后再提交
 git reset --soft HEAD~1
 ```
 
-场景：删除了本地的提交想要恢复
+#### 场景：删除了本地的提交想要恢复
 
 ~~~bash
 # 查看日志获取提交hash
@@ -112,14 +166,14 @@ git reflog
 git reset --hard {commit_hash}
 ~~~
 
-场景：更改提交信息不改动代码
+#### 场景：更改提交信息不改动代码
 
 ~~~bash
 # 输入命令进入修改
 git commit --amend
 ~~~
 
-场景：GitHub默认不允许提交超过100M的文件，但是我们又想提交超过100M(需要先把上次提交撤销)
+#### 场景：GitHub默认不允许提交超过100M的文件，但是我们又想提交超过100M(需要先把上次提交撤销)
 
 1.在项目的目录下打开终端，下载 `git lfs` 管理大文件：
 
