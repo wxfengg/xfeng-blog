@@ -1,10 +1,13 @@
 # 基于Vue3 + Element Plus项目实现el-table表格操作列自适应宽度组件
 
+<BlogHead date="2025-7-20"/>
+
 ## 前言
 
 在实际的后台管理系统开发中，表格是最常用的数据展示组件之一。而表格的操作列（通常包含编辑、删除、查看等按钮）往往需要根据业务需求动态显示不同的按钮，这就带来了一个问题：**如何让操作列的宽度能够自适应按钮的数量和内容长度？**
 
 传统的解决方案是手动设置固定宽度，但这种方式存在以下问题：
+
 - 宽度设置过小，按钮可能会被挤压或换行
 - 宽度设置过大，会浪费表格空间
 - 按钮数量动态变化时，固定宽度无法适应
@@ -63,6 +66,7 @@ graph TD
 ```
 
 **关键点说明：**
+
 - `v-auto-width`：自定义指令，用于触发宽度计算
 - `class="operation-buttons"`：标识容器，便于选择器定位
 - `<slot>`：插槽，允许外部传入按钮内容
@@ -127,6 +131,7 @@ const getOperationMaxWidth = () => {
 ```
 
 **算法说明：**
+
 - 使用 `getElementsByClassName` 获取所有操作按钮容器
 - 遍历每个容器，计算其内部按钮的总宽度
 - `button.scrollWidth` 获取按钮实际内容宽度
@@ -225,6 +230,7 @@ const tableData = ref([
 下面是一个完整的使用示例，可以直接使用：
 
 使用的父组件：
+
 ```vue
 <template>
   <div class="app-container">
@@ -313,6 +319,7 @@ setTimeout(() => {
 ```
 
 OperationColumn操作列自适应组件：
+
 ```vue
 <template>
   <el-table-column
@@ -410,6 +417,7 @@ const getOperationMaxWidth = () => {
 ## 源码地址
 
 完整的组件源码我已集成到[`xfeng-admin`](https://github.com/wxfengg/xfeng-admin)中
+
 - 组件文件：`src/components/OperationColumn/index.vue`
 - 使用示例：`src/views/demo/auto-operation-column.vue`
 

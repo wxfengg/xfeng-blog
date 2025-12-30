@@ -216,6 +216,10 @@ body {
   box-shadow: var(--vp-shadow-1);
 }
 
+.aside-curtain {
+  background: transparent !important;
+}
+
 /* =============================================
    Content Area - Apple Style
    ============================================= */

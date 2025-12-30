@@ -1,71 +1,69 @@
 # 一些关于JS的手写✏️
-<BlogHead />
+
+<BlogHead date="2025-8-4" tags="学习📚"/>
 
 ---
+
 ### call函数
 
 ~~~js
 Function.prototype.mycall = function (thisArg, ...args) {
-	// 如果调用对象不是函数 抛出错误
-	if (typeof this !== "function") {
-    	throw new Error(`${this} is not a function!`)
-  	}
-  	// 如果没有传入上下文，则默认使用全局对象
-  	thisArg = thisArg ?? globalThis
+ // 如果调用对象不是函数 抛出错误
+ if (typeof this !== "function") {
+     throw new Error(`${this} is not a function!`)
+   }
+   // 如果没有传入上下文，则默认使用全局对象
+   thisArg = thisArg ?? globalThis
     // 如果传入的上下文不是对象，则将其转换为对象
     thisArg = Object(thisArg)
     // 将函数绑定到上下文对象上并调用函数来隐式绑定this
-  	thisArg.fn = this
-	const result = thisArg.fn(...args)
+   thisArg.fn = this
+ const result = thisArg.fn(...args)
     // 删除绑定的函数
     delete thisArg.fn
     
-  	return result
+   return result
 }
 ~~~
-
-
 
 ### apply函数
 
 ~~~js
 Function.prototype.myapply = function (thisArg, argsArry) {
-	// 如果调用对象不是函数 抛出错误
-	if (typeof this !== "function") {
-    	throw new Error(`${this} is not a function!`)
-  	}
-  	// 如果没有传入上下文，则默认使用全局对象
-  	thisArg = thisArg ?? globalThis
+ // 如果调用对象不是函数 抛出错误
+ if (typeof this !== "function") {
+     throw new Error(`${this} is not a function!`)
+   }
+   // 如果没有传入上下文，则默认使用全局对象
+   thisArg = thisArg ?? globalThis
     // 如果传入的上下文不是对象，则将其转换为对象
     thisArg = Object(thisArg)
     // 将函数绑定到上下文对象上并调用函数来隐式绑定this
-  	thisArg.fn = this
-	const result = thisArg.fn(...(argsArry || []))
+   thisArg.fn = this
+ const result = thisArg.fn(...(argsArry || []))
     // 删除绑定的函数
     delete thisArg.fn
     
-  	return result
+   return result
 }
 ~~~
-
-
 
 ### bind函数
 
 ~~~js
 Function.prototype.myBind = function(thisArg, ...args) {
     // 如果调用对象不是函数 抛出错误
-	if (typeof this !== "function") {
-    	throw new Error(`${this} is not a function!`)
-  	}
+ if (typeof this !== "function") {
+     throw new Error(`${this} is not a function!`)
+   }
     
     return (...args2) => {
         // 如果没有传入上下文，则默认使用全局对象
-  		thisArg = thisArg ?? globalThis
-    	// 如果传入的上下文不是对象，则将其转换为对象
-    	thisArg = Object(thisArg)
-   		 // 将函数绑定到上下文对象上并调用函数来隐式绑定this
-  		thisArg.fn = this
+    thisArg = thisArg ?? globalThis
+     // 如果传入的上下文不是对象，则将其转换为对象
+     thisArg = Object(thisArg)
+      // 将函数绑定到上下文对象上并调用函数来隐式绑定this
+    thisArg.fn = this
         const result = thisArg.fn(...args, ...args2)
         // 删除绑定的函数
         delete thisArg.fn
@@ -74,8 +72,6 @@ Function.prototype.myBind = function(thisArg, ...args) {
     }
 }
 ~~~
-
-
 
 ### 函数柯里化
 

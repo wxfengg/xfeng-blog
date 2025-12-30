@@ -13,17 +13,20 @@ hero:
       text: 博客
       link: /blogs/handwritten
     - theme: alt
-      text: 组件展示
-      link: /apple-components
-    - theme: alt
-      text: xfeng-admin
-      link: https://github.com/wxfengg/xfeng-admin
-    - theme: alt
-      text: 图片压缩工具
-      link: https://github.com/wxfengg/ImageCompressionTool
-    - theme: alt
-      text: 毕设项目-智慧养老
-      link: https://wuxufeng.top
+      text: 去博客
+      link: /blogs/handwritten
+    # - theme: alt
+    #   text: 组件展示
+    #   link: /apple-components
+    # - theme: alt
+    #   text: xfeng-admin
+    #   link: https://github.com/wxfengg/xfeng-admin
+    # - theme: alt
+    #   text: 图片压缩工具
+    #   link: https://github.com/wxfengg/ImageCompressionTool
+    # - theme: alt
+    #   text: 毕设项目-智慧养老
+    #   link: https://wuxufeng.top
 
 features:
   - title: XFeng
@@ -176,8 +179,8 @@ const showErrorNotification = () => {
 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin: 32px 0;">
 
-<AppleCard 
-  title="探索博客" 
+<AppleCard
+  title="探索博客"
   subtitle="阅读我的技术分享和生活感悟"
   icon="📖"
 >
@@ -191,8 +194,8 @@ const showErrorNotification = () => {
   </template>
 </AppleCard>
 
-<AppleCard 
-  title="设计系统" 
+<AppleCard
+  title="设计系统"
   subtitle="查看苹果风格的UI组件"
   icon="🎨"
 >
@@ -206,8 +209,8 @@ const showErrorNotification = () => {
   </template>
 </AppleCard>
 
-<AppleCard 
-  title="开源项目" 
+<AppleCard
+  title="开源项目"
   subtitle="我的GitHub开源贡献"
   icon="💻"
 >
@@ -278,5 +281,3 @@ const showErrorNotification = () => {
 <AppleCard>
   <VisitorPanel />
 </AppleCard>
-
-
