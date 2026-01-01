@@ -1,4 +1,5 @@
 export const mdList = [
+  { text: "2026🚀", link: "/blogs/2026" },
   { text: "笔记✍️", link: "/blogs/notes" },
   { text: "💻Git", link: "/blogs/git" },
   { text: "TreeSelect树形选择组件", link: "/blogs/tree-select" },
