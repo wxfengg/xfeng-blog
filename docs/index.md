@@ -11,10 +11,10 @@ hero:
   actions:
     - theme: brand
       text: 博客
-      link: /blogs/handwritten
+      link: /blogs/2026
     - theme: alt
       text: 去博客
-      link: /blogs/handwritten
+      link: /blogs/2026
     # - theme: alt
     #   text: 组件展示
     #   link: /apple-components
@@ -175,7 +175,7 @@ const showErrorNotification = () => {
 }
 </script> -->
 
-## 快速开始
+<!-- ## 快速开始
 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin: 32px 0;">
 
@@ -224,7 +224,7 @@ const showErrorNotification = () => {
   </template>
 </AppleCard>
 
-</div>
+</div> -->
 
 <!-- ## 技术栈
 
@@ -260,7 +260,7 @@ const showErrorNotification = () => {
   </div>
 </div> -->
 
-## 联系我
+<!-- ## 联系我
 
 <div style="margin: 32px 0;">
   <AppleCard  icon="📬" style="text-align: center;">
@@ -274,7 +274,7 @@ const showErrorNotification = () => {
       </div>
     </div>
   </AppleCard>
-</div>
+</div> -->
 
 </div>
 
