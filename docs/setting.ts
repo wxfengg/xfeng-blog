@@ -1,4 +1,5 @@
 export const mdList = [
+  { text: "FLIP 动画策略的理解", link: "/blogs/FLIP" },
   { text: "2026🚀", link: "/blogs/2026" },
   { text: "笔记✍️", link: "/blogs/notes" },
   { text: "💻Git", link: "/blogs/git" },
