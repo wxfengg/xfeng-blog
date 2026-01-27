@@ -11,10 +11,10 @@ hero:
   actions:
     - theme: brand
       text: 博客
-      link: /blogs/2026
+      link: /blogs/FLIP
     - theme: alt
       text: 去博客
-      link: /blogs/2026
+      link: /blogs/FLIP
     # - theme: alt
     #   text: 组件展示
     #   link: /apple-components
@@ -63,27 +63,27 @@ import { mdList } from "../docs/setting.ts";
 <!-- ## 🎉 互动体验
 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 32px 0;">
-  <AppleButton 
-    variant="primary" 
-    text="✅ 成功通知" 
+  <AppleButton
+    variant="primary"
+    text="✅ 成功通知"
     @click="showSuccessNotification"
     style="width: 100%;"
   />
-  <AppleButton 
-    variant="secondary" 
-    text="ℹ️ 信息通知" 
+  <AppleButton
+    variant="secondary"
+    text="ℹ️ 信息通知"
     @click="showInfoNotification"
     style="width: 100%;"
   />
-  <AppleButton 
-    variant="outline" 
-    text="⚠️ 警告通知" 
+  <AppleButton
+    variant="outline"
+    text="⚠️ 警告通知"
     @click="showWarningNotification"
     style="width: 100%;"
   />
-  <AppleButton 
-    variant="danger" 
-    text="❌ 错误通知" 
+  <AppleButton
+    variant="danger"
+    text="❌ 错误通知"
     @click="showErrorNotification"
     style="width: 100%;"
   />
