@@ -13,17 +13,17 @@
 
 1.遇到重复保留最后一次出现的数据
 
-~~~js
+```js
 const dedupeByKey = <T extends Record<string, any>, K extends keyof T>(array: T[], key: K): T[] => {
     const map = new Map<T[K], T>()
     array.foreach(item => map.set(item[key], item))
     return [...map.values()]
 }
-~~~
+```
 
 2.遇到重复保留第一次出现的数据
 
-~~~js
+```js
 const  dedupeByKey = <T extends Record<string, any>, K extends keyof T>(array: T[], key: K): T[] => {
     const set = new Set<T[K]>()
     return arrary.filter(item => {
@@ -32,19 +32,19 @@ const  dedupeByKey = <T extends Record<string, any>, K extends keyof T>(array: T
         return true
     })
 }
-~~~
+```
 
 #### 取默认值
 
 下面是两种常见的取默认值写法：
 
-~~~js
+```js
 /** example1 */
 const result = object.value || "default"
 
 /** example2 */
 const result = object.value ?? "default"
-~~~
+```
 
 **区别**
 
@@ -70,7 +70,7 @@ const result = object.value ?? "default"
 
 方法一（代码简单，但如果服务器设置图片不能下载，则无法触发浏览器保存）：
 
-~~~js
+```js
 const downloadFile = (url: string) => {
   const link = document.createElement("a")
   link.href = url
@@ -79,11 +79,11 @@ const downloadFile = (url: string) => {
   link.click()
   document.body.removeChild(link)
 }
-~~~
+```
 
 方法二（比较万能，但是会有跨域问题，原理是使用canvas）：
 
-~~~js
+```js
 const downloadFile = (url: string, name: string) => {
   let image = new Image()
   image.setAttribute("crossOrigin", "anonymous")
@@ -110,7 +110,7 @@ const downloadFile = (url: string, name: string) => {
     }
   }
 }
-~~~
+```
 
 <br />
 
@@ -118,7 +118,7 @@ const downloadFile = (url: string, name: string) => {
 
 > 适用场景：后端返回文件地址，想实现点击下载，触发浏览器保存。无论是图片、文件都可以，可以接受流也可以接受文件URL
 
-~~~js
+```js
 /**
  * 通用文件下载方法，支持图片、Excel、PDF等文件类型
  * @param {string|Blob} source - 文件URL或Blob对象
@@ -167,7 +167,7 @@ export const downloadFile = async (source: string | Blob, filename: string) => {
     window.open(source as string)
   }
 }
-~~~
+```
 
 <br />
 
@@ -177,32 +177,64 @@ export const downloadFile = async (source: string | Blob, filename: string) => {
 
 > 适用场景：后端返回图片流，前端直接显示（可以用img标签）。适用于二维码显示、预览图片显示等
 
-~~~js
+```js
 const captchaImage = ref("")
 const getImage = async () => {
- // 请求接口获取图片流
- const res = await getCodeImageApi()
- // 获取图片
- const blob = new Blob([res.data], { type: "image/jpeg" })
-   captchaImage.value = URL.createObjectURL(blob)
-} 
-~~~
+  // 请求接口获取图片流
+  const res = await getCodeImageApi()
+  // 获取图片
+  const blob = new Blob([res.data], { type: "image/jpeg" })
+  captchaImage.value = URL.createObjectURL(blob)
+}
+```
 
 <br />
 
 ### CSS相关
 
+#### pointer-events
+
+`pointer-events` 属性用于控制元素是否能成为鼠标事件(比如鼠标点击、悬停（hover）、拖拽等事件)的目标。常用的可以设置以下值：
+
+`auto`：默认值，元素可以成为鼠标事件的目标。
+
+- 元素表现出正常的行为。
+- 它会响应鼠标点击、悬停（hover）、拖拽等事件。
+- 它会遮挡位于其下方的元素，下方的元素无法接收事件。
+
+`none`：元素不会成为鼠标事件的目标，鼠标事件会穿透到下面的元素。
+
+- 元素变为“虚无”
+- 点击穿透：元素永远不会成为鼠标事件的目标。点击该元素时，浏览器会忽略它，事件会直接穿透到该元素下方的元素（在 Z 轴上下一个元素）。
+- 交互失效：在该元素上绑定的 JavaScript click、mouseenter 等监听器不会触发。
+- CSS 状态失效：该元素上的 CSS :hover、:active 伪类样式将不会生效。
+- 光标：鼠标指针经过时不会感知到该元素（例如不会变成小手图标，文本光标也不会显示）。
+
+⚠️**继承与恢复（关键点）**
+
+- 继承性：`pointer-events` 属性是可以继承的。如果一个父元素设置了 `pointer-events: none;`，那么它的所有子元素也会继承这个属性，导致子元素同样无法响应鼠标事件。
+- 可恢复性：如果你想让某个子元素恢复鼠标事件响应能力，可以在该子元素上单独设置 `pointer-events: auto;`。
+
+**常见场景**
+
+1. 禁用交互：当你想让某个元素（如按钮、链接等）暂时不可点击时，可以使用 `pointer-events: none;`。
+2. 创建覆盖层：在创建模态对话框或加载遮罩时，可以使用 `pointer-events: none;` 来确保遮罩层不会阻止用户与下方内容的交互。
+3. 自定义拖拽行为：在实现拖拽功能时，可以使用 `pointer-events` 来控制哪些元素可以响应拖拽事件。
+4. 水印效果：在图片或内容上添加水印时，可以使用 `pointer-events: none;` 让水印不影响用户对内容的操作。
+
+<br />
+
 #### 通用两栏文字排版做法【grid终极方案】
 
-~~~html
+```html
 <style>
-.box {
-  display: grid;
-  grid-template-columns: max-content 1fr; // 两列，第一列宽度自适应内容，第二列占满剩余空间
-  row-gap: 16px;
-  column-gap: 24px;
-  align-items: center;
-}
+  .box {
+    display: grid;
+    grid-template-columns: max-content 1fr; // 两列，第一列宽度自适应内容，第二列占满剩余空间
+    row-gap: 16px;
+    column-gap: 24px;
+    align-items: center;
+  }
 </style>
 
 <div class="box">
@@ -218,17 +250,17 @@ const getImage = async () => {
   <div>L</div>
   <div>这是一条很短的label</div>
 </div>
-~~~
+```
 
 <br />
 
 #### 图片闪烁/呼吸灯效果
 
-~~~css
+```css
 img {
   animation: blink 3s infinite; /* 设置图片动画 */
 }
- 
+
 @keyframes blink {
   0% {
     opacity: 1; /* 动画开始时不透明 */
@@ -240,7 +272,7 @@ img {
     opacity: 1; /* 动画结束时重新不透明 */
   }
 }
-~~~
+```
 
 <br />
 
@@ -248,9 +280,9 @@ img {
 
 **代码举例：**
 
-~~~css
-background: color-mix(in srgb, var(--el-menu-active-color) 10%, transparent)
-~~~
+```css
+background: color-mix(in srgb, var(--el-menu-active-color) 10%, transparent);
+```
 
 **参数说明：**
 
@@ -262,7 +294,7 @@ background: color-mix(in srgb, var(--el-menu-active-color) 10%, transparent)
 
 **其他用法举例：**
 
-~~~css
+```css
 // 混合红色和蓝色，各占50%
 background: color-mix(in srgb, red, blue);
 
@@ -275,21 +307,21 @@ background: color-mix(in srgb, var(--primary-color) 20%, white);
 // 创建悬停效果
 .button {
   background: var(--button-color);
-  
+
   &:hover {
     background: color-mix(in srgb, var(--button-color) 80%, white);
   }
 }
-~~~
+```
 
 **不同颜色空间**
 
-~~~css
+```css
 // 使用不同的颜色空间进行混合
 color-mix(in hsl, red, blue) // HSL 色彩空间
-color-mix(in hwb, red, blue) // HWB 色彩空间  
+color-mix(in hwb, red, blue) // HWB 色彩空间
 color-mix(in lab, red, blue) // LAB 色彩空间
-~~~
+```
 
 **总结：**
 
@@ -307,19 +339,19 @@ color-mix(in lab, red, blue) // LAB 色彩空间
 
 1.安装**`asar`**
 
-~~~bash
+```bash
 # pnpm下载
 pnpm i asar -g
 
 # npm下载
 npm install asar -g
-~~~
+```
 
 2.在resources目录下使用asar指令进行加密
 
-~~~bash
+```bash
 asar pack ./app app.asar
-~~~
+```
 
 加密后结果如下：
 
