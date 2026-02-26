@@ -1,24 +1,13 @@
 // https://vitepress.dev/guide/custom-theme
-import { h } from 'vue'
-import { inBrowser, useRoute, type Theme } from 'vitepress'
-import DefaultTheme from 'vitepress/theme'
-import Layout from './Layout.vue'
+import { h } from "vue"
+import { inBrowser, type Theme } from "vitepress"
+import DefaultTheme from "vitepress/theme"
+import Layout from "./Layout.vue"
 import busuanzi from "busuanzi.pure.js"
-import './style.css'
-import VisitorPanel from './components/VisitorPanel.vue'
-import BlogHead from './components/BlogHead.vue'
-import AppleBackground from './components/AppleBackground.vue'
-import AppleNavEnhancement from './components/AppleNavEnhancement.vue'
-import AppleCard from './components/AppleCard.vue'
-import AppleButton from './components/AppleButton.vue'
-import AppleLoadingSpinner from './components/AppleLoadingSpinner.vue'
-import AppleTooltip from './components/AppleTooltip.vue'
-import AppleTabs from './components/AppleTabs.vue'
-import AppleModal from './components/AppleModal.vue'
-import AppleProgressBar from './components/AppleProgressBar.vue'
-import AppleNotification from './components/AppleNotification.vue'
-import AppleSearch from './components/AppleSearch.vue'
-import AppleFloatingActionButton from './components/AppleFloatingActionButton.vue'
+import "./style.css"
+
+// 自动导入 components 目录下所有 .vue 组件
+const modules = import.meta.glob("./components/*.vue", { eager: true }) as Record<string, { default: any }>
 
 export default {
   extends: DefaultTheme,
@@ -27,23 +16,15 @@ export default {
       // https://vitepress.dev/guide/extending-default-theme#layout-slots
     })
   },
-  enhanceApp(ctx) {
-    const { app, router, siteData } = ctx
+  enhanceApp({ app, router }) {
+    // 自动注册所有组件（文件名即组件名）
+    for (const path in modules) {
+      const componentName = path.match(/\/([^/]+)\.vue$/)?.[1]
+      if (componentName) {
+        app.component(componentName, modules[path].default)
+      }
+    }
 
-    app.component("VisitorPanel", VisitorPanel)
-    app.component("BlogHead", BlogHead)
-    app.component("AppleBackground", AppleBackground)
-    app.component("AppleNavEnhancement", AppleNavEnhancement)
-    app.component("AppleCard", AppleCard)
-    app.component("AppleButton", AppleButton)
-    app.component("AppleLoadingSpinner", AppleLoadingSpinner)
-    app.component("AppleTooltip", AppleTooltip)
-    app.component("AppleTabs", AppleTabs)
-    app.component("AppleModal", AppleModal)
-    app.component("AppleProgressBar", AppleProgressBar)
-    app.component("AppleNotification", AppleNotification)
-    app.component("AppleSearch", AppleSearch)
-    app.component("AppleFloatingActionButton", AppleFloatingActionButton)
     if (inBrowser) {
       router.onAfterRouteChange = () => {
         busuanzi.fetch()

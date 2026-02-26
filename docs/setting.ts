@@ -1,16 +1,9 @@
-export const mdList = [
-  { text: "FLIP 动画策略的理解", link: "/blogs/FLIP" },
-  { text: "2026🚀", link: "/blogs/2026" },
-  { text: "笔记✍️", link: "/blogs/notes" },
-  { text: "💻Git", link: "/blogs/git" },
-  { text: "TreeSelect树形选择组件", link: "/blogs/tree-select" },
-  { text: "一些关于JS的手写✏️", link: "/blogs/handwritten" },
-  { text: "JS的内功修练...", link: "/blogs/js" },
-  {
-    text: "表格操作列自适应组件",
-    link: "/blogs/opreation-column",
-  },
-  { text: "VueConf2025🎉", link: "/blogs/vueconf2025" },
-  { text: "🗓️计划「2025下」", link: "/blogs/plan" },
-  { text: "开始🚶", link: "/blogs/XFeng" },
-]
+/**
+ * 博客侧边栏列表
+ * ⚠️ 此文件由 .vitepress/config.ts 中的 generateBlogList() 动态生成数据
+ * 无需手动维护，新增/修改博客文件后重启 dev 或 build 即可自动排序
+ */
+export interface BlogItem {
+  text: string
+  link: string
+}

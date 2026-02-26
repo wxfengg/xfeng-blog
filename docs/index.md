@@ -11,10 +11,10 @@ hero:
   actions:
     - theme: brand
       text: 博客
-      link: /blogs/FLIP
+      link: /blogs/latest
     - theme: alt
       text: 去博客
-      link: /blogs/FLIP
+      link: /blogs/latest
     # - theme: alt
     #   text: 组件展示
     #   link: /apple-components
@@ -42,10 +42,6 @@ features:
       src: /emoji3.svg
     details: 喜欢旅游、探险 却 心有余而力不足😅</br></br>懒🛏</br></br>永远相信美好的事情即将发生💗
 ---
-
-<script setup>
-import { mdList } from "../docs/setting.ts";
-</script>
 
 <div style="margin-top: 40px;">
 
