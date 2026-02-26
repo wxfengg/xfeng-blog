@@ -192,6 +192,65 @@ const getImage = async () => {
 
 ### CSS相关
 
+#### Flexbox 陷阱
+
+##### 陷阱1：居中布局 + 内容溢出 = 顶部内容丢失
+
+**场景描述：**
+
+使用 Flexbox 进行垂直居中布局时，如果子元素总高度超出父容器，**顶部内容会被截断且无法滚动到**。
+
+举个例子：父容器高度 500px，内部有 9 个子元素（每个 100px），设置了 `flex-direction: column` + `justify-content: center`。当子元素超过 5 个时，上方的元素就会溢出到容器顶部之外，被"吃掉"。
+
+**❓ `overflow: auto` 能解决吗？**
+
+**不能。** 设置 `overflow: auto` 后虽然会出现滚动条，但滚动条只能**往下滚**，溢出到顶部之外的内容（如 item 1、2、3）**永远无法滚动到**。
+
+**❓ 核心问题**
+
+> 内容高度不确定，可能溢出，同时又需要垂直居中——怎么办？
+
+**原因分析：**
+
+`align-items: center` / `justify-content: center` 会将内容**向中心挤压**。当内容总高度超出容器时，溢出部分被均匀分配到两端，而顶部溢出的区域处于滚动起点之前，滚动条无法到达。
+
+```
+┌──────────────┐
+│  Invisible   │ ← 内容溢出到容器顶部之外，滚动条无法到达
+│   item 1     │
+│   item 2     │
+├──────────────┤ ← 容器顶部
+│   item 3     │
+│   item 4     │ ← 居中点
+│   item 5     │
+├──────────────┤ ← 容器底部
+│   item 6     │
+│  Invisible   │ ← 这部分可以滚动到
+└──────────────┘
+```
+
+**✅ 解决方案：用 `margin: auto` 替代居中属性**
+
+`margin: auto` 在 Flex 容器中同样可以实现居中效果，但当内容溢出时，它不会把内容推到滚动起点之前，所有内容都能通过滚动访问到。
+
+```css
+.container {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.item {
+  margin: auto 0; /* 垂直方向 auto 实现居中，水平方向保持不变 */
+}
+```
+
+::: warning 结论
+可滚动容器内，**永远不要用 `align-items: center` / `justify-content: center`**，请用 **`margin: auto`** 替代。
+:::
+
+<br />
+
 #### pointer-events
 
 `pointer-events` 属性用于控制元素是否能成为鼠标事件(比如鼠标点击、悬停（hover）、拖拽等事件)的目标。常用的可以设置以下值：
